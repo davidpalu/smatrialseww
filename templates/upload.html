@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Upload Study Material</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <select class="form-select" name="subject" id="subject" required>
+    <option value="">Select Subject</option>
+    <option value="OS">OS</option>
+    <option value="DBMS">DBMS</option>
+    <option value="Discrete Mathematics">Discrete Mathematics</option>
+    <option value="Statistics and Probability">Statistics and Probability</option>
+    <option value="Software Engineering">Software Engineering</option>
+</select>
+    </div>
+    <div class="mb-3">
+        <label for="unit" class="form-label">Unit</label>
+        <select class="form-select" name="unit" id="unit" required>
+    <option value="">Select Unit</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="file" class="form-label">Upload File (PDF, PPT, DOC)</label>
+        <input type="file" class="form-control" id="file" name="file" accept=".pdf,.ppt,.pptx,.doc,.docx" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

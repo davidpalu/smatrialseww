@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Study Materials</h1>
+<form method="POST" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <label for="subject" class="form-label">Subject</label>
+        <select class="form-select" id="subject" name="subject" required>
+    <option value="">Select Subject</option>
+    <option value="OS" {% if selected_subject == 'OS' %}selected{% endif %}>OS</option>
+    <option value="DBMS" {% if selected_subject == 'DBMS' %}selected{% endif %}>DBMS</option>
+    <option value="Discrete Mathematics" {% if selected_subject == 'Discrete Mathematics' %}selected{% endif %}>Discrete Mathematics</option>
+    <option value="Statistics and Probability" {% if selected_subject == 'Statistics and Probability' %}selected{% endif %}>Statistics and Probability</option>
+    <option value="Software Engineering" {% if selected_subject == 'Software Engineering' %}selected{% endif %}>Software Engineering</option>
+</select>
+    </div>
+    <div class="col-md-4">
+        <label for="unit" class="form-label">Unit</label>
+        <select class="form-select" id="unit" name="unit" required>
+    <option value="">Select Unit</option>
+    <option value="1" {% if selected_unit == '1' %}selected{% endif %}>1</option>
+    <option value="2" {% if selected_unit == '2' %}selected{% endif %}>2</option>
+    <option value="3" {% if selected_unit == '3' %}selected{% endif %}>3</option>
+    <option value="4" {% if selected_unit == '4' %}selected{% endif %}>4</option>
+</select>
+    </div>
+    <div class="col-md-4 align-self-end">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="/upload" class="btn btn-success">Upload New</a>
+    </div>
+</form>
+
+{% if materials %}
+    <div class="list-group">
+    {% for m in materials %}
+        <div class="list-group-item">
+            <h5>{{ m[3] }}</h5>
+            <p><b>Subject:</b> {{ m[1] }} | <b>Unit:</b> {{ m[2] }}</p>
+            <a href="{{ m[3] }}" class="btn btn-sm btn-outline-primary" target="_blank">Material Link</a>
+        </div>
+    {% endfor %}
+    </div>
+{% elif selected_subject and selected_unit %}
+    <div class="alert alert-warning">No materials found for this subject and unit.</div>
+{% endif %}
+{% endblock %}

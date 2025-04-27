@@ -1,0 +1,11 @@
+[build]
+  publish = "static"
+  command = "echo 'No build step required'"
+
+[build.environment]
+  FLASK_ENV = "production"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

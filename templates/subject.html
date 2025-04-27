@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">{{ subject[0] }} Materials</h1>
+
+{% if materials %}
+<div class="list-group">
+    {% for material in materials %}
+    <div class="list-group-item">
+        <h5 class="mb-1">{{ material[2] }}</h5>
+        <small class="text-muted">Uploaded on: {{ material[4] }}</small>
+        <div class="mt-2">
+            <a href="{{ material[3] }}" class="btn btn-sm btn-primary" target="_blank">Download</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    No materials available for this subject yet.
+</div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="/" class="btn btn-secondary">Back to Subjects</a>
+</div>
+{% endblock %} 
